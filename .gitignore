@@ -1,18 +1,93 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+ff#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 
-# Other files and folders
-.settings/
+import sys , os , time , socket
+from urllib2 import Request, urlopen, URLError, HTTPError
+from platform import system
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+if system() == 'Linux':
+    os.system('clear')
+if system() == 'Windows':
+    os.system('cls')
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+def slowprint(s):
+    for c in s + '\n' :
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(10. / 100)
+slowprint("Starting Please Wait ANT on action Let's Hack ....")
+time.sleep(1)
+os.system('clear')
+
+
+def Space(j):
+	i = 0
+	while i<=j:
+		print " ",
+		i+=1
+
+
+def findAdmin():
+	try:
+		f2 = open(sys.argv[1], "r")
+		f3 = open("output.txt", "w")
+	except IndexError as IE:
+		print "\n\nTry root@khan:~# python ant.py list.txt \n"
+	else:
+		print "\n\nAttack on: \n"
+		while True:
+			link = f2.readline()
+			link = link[:-1]
+			if not link:
+				break
+			f = open("fixed_dont_change.txt","r");
+			while True:
+				sub_link = f.readline()
+				#sub_link = sub_link[:-2]
+				#print link
+				#print sub_link
+				if not sub_link:
+					break
+				req_link = "http://"+link+"/"+sub_link
+				#print req_link
+				req = Request(req_link)
+				try:
+					#print req
+					response = urlopen(req)
+				except HTTPError:
+					continue
+				except URLError:
+					continue
+				except socket.error, exc:
+					continue
+				#else:
+				#	print "OK => ",req_link
+				else:
+					print "OK => ",req_link
+					f3.write(req_link)
+		f2.close()
+
+def Credit():
+
+		Space(9); print " ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄ "
+		Space(9); print "▐░░░░░░░░░░░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌"
+		Space(9); print "▐░█▀▀▀▀▀▀▀█░▌▐░▌░▌     ▐░▌ ▀▀▀▀█░█▀▀▀▀ "
+		Space(9); print "▐░▌       ▐░▌▐░▌▐░▌    ▐░▌     ▐░▌     "
+		Space(9); print "▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▐░▌   ▐░▌     ▐░▌     "
+		Space(9); print "▐░░░░░░░░░░░▌▐░▌  ▐░▌  ▐░▌     ▐░▌     "
+		Space(9); print "▐░█▀▀▀▀▀▀▀█░▌▐░▌   ▐░▌ ▐░▌     ▐░▌     "
+		Space(9); print "▐░▌       ▐░▌▐░▌    ▐░▌▐░▌     ▐░▌     "
+		Space(9); print "▐░▌       ▐░▌▐░▌     ▐░▐░▌     ▐░▌     "
+		Space(9); print "▐░▌       ▐░▌▐░▌      ▐░░▌     ▐░▌     "
+		Space(9); print " ▀         ▀  ▀        ▀▀       ▀      "
+		                                       
+		Space(9); print "  Admin       NoScript       Tester    "
+		Space(9); print "====================================== "
+		Space(9); print " Create By D@rk_H1s@n & Reboot_Ex      "				
+
+
+if __name__ == "__main__":
+	Credit()
+	findAdmin()
+
+
